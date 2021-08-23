@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Posted by: {{user.name}} on {{date_created}} </h6>
+            <h6 class="card-subtitle mb-2 text-muted">Comments: {{comments.length}}</h6>
+            <p class="card-text">{{blog_text}}</p>
+
+        </div>
+
+        <div class="container">
+            <h6 class="mb-2 card-title">Comments:</h6>
+
+            <ul class="list-group list-group-flush">
+                {{#each comms as |comms| }}
+
+                <div class="card">
+                    <div class="card-body">
+                        <h7 class="card-title mb-2">{{user.name}} on {{comment_date}} </h7>
+                        <p class="card-text text-muted">{{comment_text}}</p>
+
+                        {{!-- <a href="" /blogs/{{id}}"" class="card-link">Read more...</a> --}}
+                    </div>
+                </div>
+                {{/each}}
+
+                {{!-- <a href="/comment" class="card-link">Add Comment</a> --}}
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <input id="comment-txt" class="form-control" type="text" placeholder="Add a comment..."
+                                aria-label="default input example">
+                            <button id="AddCommentBtn" type="button" class="btn btn-link" blogid="{{id}}">Add
+                                Comment</button>
+                        </form>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../js/blogHandler.js"></script>
