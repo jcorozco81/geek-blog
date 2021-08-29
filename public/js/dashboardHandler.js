@@ -1,8 +1,9 @@
 let blogTitle = $('#blog-title');
 let blogText = $('#blog-text');
-let bPosterID = $("#AddBlogBtn").attr('bPosterID');
-let addBlogBtn = $('#AddBlogBtn');
+let bPosterID = $("#addBlogBtn").attr('bPosterID');
+let addBlogBtn = $('#addBlogBtn');
 let delBlogBtn = $('.delBlogBtn');
+
 
 
 
@@ -33,12 +34,13 @@ const handleFormSubmit = async (event) => {
       }
     }
 
+    // Delete Function
+
     const handleFormDelete = async (event) => {
       event.preventDefault();
       alert('delete project');
       if (event.target.hasAttribute('delid')) {
         const delID = event.target.getAttribute('delid');
-        // let delID = $(".delBlogBtn").attr('delid');
         const response = await fetch(`/api/blogs/${delID}`, {
           method: 'DELETE',
         });
@@ -50,7 +52,41 @@ const handleFormSubmit = async (event) => {
         }
       }
     };
+
+// // Load for Edit Fuction
+//     const handleFormEdit = async (event) => {
+//       event.preventDefault();    
+//       alert('edit project');
+//       if (event.target.hasAttribute('editid')) {
+//         const editID = event.target.getAttribute('editid');
+//         $("#saveBlogBtn").attr('saveID', editID);
+//     console.log(editID);
+//       const toEdit = await fetch(`/api/blogs/${editID}`, {
+//         method: 'GET',
+//       });
+
+//         if (toEdit.ok) {
+//           console.log(toEdit);
+
+//           // document.location.replace('/dashboard');
+// $('#blog-title').val("A");
+// $('#blog-text').val("B");
+//         } 
+//         else {
+//           alert('Failed to update project');
+//         }
+//       }
+//     };
+
+
+// Save Edit Fuction
+
+
+
+
+
     
 
 addBlogBtn.on('click', handleFormSubmit);
 delBlogBtn.on('click', handleFormDelete);
+
