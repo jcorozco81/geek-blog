@@ -34,6 +34,33 @@ console.log(req.session.user_id);
   }
 });
 
+router.get("/edit/:id", withAuth, async (req, res) => {
+  try {
+    const getBlog = await Blogs.findByPk(req.params.id, {
+      include: [{ model: User }, { model: Comments, include: [{ model: User }] }],
+    });
+    const blog = getBlog.get({ plain: true });
+    const comms = blog.comments;
+    console.log(blog);
+    if (blog.user_id===req.session.user_id){
+console.log("Authorized");
+ 
+    res.render("edit", { ...blog, comms, logged_in: req.session.logged_in, user_id: req.session.user_id, blog_id: req.params.id});
+  }
+else{
+  res.json(`Error: Not Authorized`);
+
+}
+
+} catch (err) {
+    res.status(400).json(err);
+    
+  }
+});
+
+
+
+
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
     const blogData = await Blogs.findAll({ where: {user_id: req.session.user_id},

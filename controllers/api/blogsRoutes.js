@@ -22,6 +22,34 @@ router.get('/', async (req, res) => {
       }
     });
 
+
+
+    router.get('/:id', async (req, res) => {
+      try {
+          const blogData = await Blogs.findByPk(req.params.id,
+              {
+                  include: [{ model: User }, { model: Comments }],
+                  // attributes: { exclude: ["time_id", "service_id"] },
+                }
+  
+          );
+          const blogD = blogData.get({ plain: true });
+
+          blogD
+  
+          res.status(200).json(blogD);
+        } catch (err) {
+          res.status(500).json(err);
+        }
+      });
+
+
+
+
+
+
+
+
     router.post('/', withAuth, async (req, res) => {
       try {
           const blogData = await Blogs.create(req.body);  
@@ -33,6 +61,26 @@ router.get('/', async (req, res) => {
           res.status(400).json(err);
         }
       });
+
+      router.put('/:id', async (req, res) => {
+        try {
+          const blogData = await Blogs.update(req.body, {
+            where: {
+              id: req.params.id,
+            },
+          });
+          res.status(200).json(blogData);
+          if (!blogData) {
+            res.status(400).json({ message: "Blog not found" });
+          }
+        } catch (err) {
+          res.status(500).json(err);
+        }
+      });
+
+
+
+
 
       router.delete('/:id', withAuth, async (req, res) => {
         try {
