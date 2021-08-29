@@ -1,67 +1,101 @@
 <div class="container">
-          <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-                  <h1 class="display-5 text-center">my dashboard</h1>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-5 text-center text-white"><u>my dashboard</u></h1>
 
-      </div>
     </div>
+  </div>
   <div class="row">
 
-
-
-
     <div class="col">
-                  {{!-- <h1 class="display-6 text-center">add a new blog</h1> --}}
+      <div class="card m-1">
+        <h3 class="text-center text-dark card-header">add a new blog</h3>
+        <div class="card-body">
+          <form class="row g-3">
+            <div class="col-12">
+              <label for="blogTitle" class="form-label">Blog Title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="blog-title"
+                placeholder="Blog Title"
+              />
+            </div>
+            <div class="col-12">
+              <label for="blogText" class="form-label">Blog Text</label>
+              <textarea
+                class="form-control"
+                id="blog-text"
+                placeholder="Your text..."
+                rows="15"
+              ></textarea>
+            </div>
+            <div class="col-12">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                id="addBlogBtn"
+                bPosterID="{{user_id}}"
+              >Save</button>
 
-                  <p class="lead text-center">
-add a new blog
-</p>
-<form class="row g-3">
-  <div class="col-12">
-    <label for="blogTitle" class="form-label">Blog Title</label>
-    <input type="text" class="form-control" id="blog-title" placeholder="Blog Title">
-  </div>
-  <div class="col-12">
-    <label for="blogText" class="form-label">Blog Text</label>
-    <textarea class="form-control" id="blog-text" placeholder="Your text..."></textarea>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary" id="AddBlogBtn" bPosterID="{{user_id}}">Save</button>
-  </div>
-</form>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
 
-    <div class="col">
-        {{!-- <h1 class="display-6 text-center">my blogs</h1> --}}
-                          <p class="lead text-center">
-my blogs
-</p>
-{{#each blogList as |blog| }}
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">{{title}}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Posted by: {{user.name}} on {{date_created}} </h6>
-    <h6 class="card-subtitle mb-2 text-muted">Comments: {{comments.length}}</h6>
-    <a href="blog/{{id}}" class="card-link">Read</a>
-    <a href="blog/edit/{{id}}" class="card-link">Edit</a>
-
-    <button type="button" class="btn btn-link delBlogBtn" delid="{{id}}">Delete</button>
 
 
 
-    {{!-- <a href="api/blog/delete/{{id}}" class="card-link">Delete</a> --}}
+          <div class="col">
+      <div class="card m-1">
+        <h3 class="text-center text-dark card-header">my blogs</h3>
+        <div class="card-body">
+
+      {{#each blogList as |blog|}}
+        <div class="card mb-3">
+          <h5 class="card-header">{{title}}</h5>
+          <div class="card-body">
+            {{!-- <h5 class="card-title">{{title}}</h5> --}}
+            <h6 class="card-subtitle mb-2 text-muted">Posted by:
+              {{user.name}}
+              on
+              {{date_created}}
+            </h6>
+            <h6 class="card-subtitle mb-2 text-muted">Comments:
+              {{comments.length}}</h6>
+
+            <a href="blog/{{id}}" class="card-link">Read this blog.</a>
+
+            <div class="card-body">
+              <button
+                type="button"
+                onclick="location.href='edit/{{id}}';"
+                class="btn btn-warning editBlogBtn"
+                editid="{{id}}"
+              >Edit</button>
+              <button
+                type="button"
+                class="btn btn-danger delBlogBtn"
+                delid="{{id}}"
+              >Delete</button></div>
+
+          </div>
+        </div>
+      {{/each}}
+    </div>
 
   </div>
 </div>
-{{/each}}
-    </div>
-
-  </div>
-</div>
+      </div>
 
 <div class="container">
 
 </div>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="../js/dashboardHandler.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"
+></script>
+<script src="../js/dashboardHandler.js"></script>

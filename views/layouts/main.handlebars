@@ -16,38 +16,56 @@
     <title>the geek blog: Computers, Tech and More...</title>
   </head>
 
-  <body>
+  <body class="bg-secondary">
+
 
     {{! Header }}
     <header>
       <nav>
-      <ul class="nav justify-content-end">
+        <ul class="nav justify-content-end">
+                      <li class="nav-item">
+              <button
+                class="btn btn-link"
+                onclick="location.href='/';"
+              >Home</button>
 
-        {{#if logged_in}}
- 
-          <li class="nav-item">
-            <a class="nav-link" href="/dashboard">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <button class="no-button" id="logout">Logout</button>
+              {{! <a class="nav-link" href="/">Home</a> }}
             </li>
 
-        {{else}}
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Log In</a>
+          {{#if logged_in}}
+
+
+            <li class="nav-item">
+
+                            <button
+                class="btn btn-link"
+                onclick="location.href='/dashboard';"
+              >Dashboard</button>
+              {{!-- <a class="nav-link" href="/dashboard">Dashboard</a> --}}
+            </li>
+            <li class="nav-item">
+              <button class="btn btn-link" id="logout">Logout</button>
             </li>
 
-        {{/if}}
+          {{else}}
+            <li class="nav-item">
+              <button class="btn btn-link" onclick="location.href='/login';">Log
+                In</button>
 
-      </ul>
+              {{! <a class="nav-link" href="/login">Log In</a> }}
+            </li>
+
+          {{/if}}
+
+        </ul>
 
       </nav>
     </header>
 
-    <div class="jumbotron jumbotron-fluid">
+    <div class="jumbotron jumbotron-fluid mb-2">
       <div class="container">
-        <h1 class="display-4">the geek blog</h1>
-        <p class="lead">Computers, Tech and More...</p>
+        <h1 class="display-4 text-warning">the geek blog</h1>
+        <p class="lead text-white">Computers, Tech and More...</p>
       </div>
     </div>
 
@@ -56,15 +74,12 @@
       {{{body}}}
     </main>
 
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
       crossorigin="anonymous"
     ></script>
 
-
   </body>
-      <script src="../js/logout.js"></script>
-
+  <script src="../js/logout.js"></script>
 </html>

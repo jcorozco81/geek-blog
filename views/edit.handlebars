@@ -1,18 +1,47 @@
 <div class="container">
-  <div class="row">
+
+<div class="row">
+
     <div class="col">
-<form class="row g-3">
-  <div class="col-12">
-    <label for="inputAddress" class="form-label">Blog Title</label>
-    <input type="text" class="form-control" id="blog-title" placeholder="Blog Title">
+
+  <div class="card-body">
+            <h3 class="card-title text-center">edit your blog</h3>
   </div>
-  <div class="col-12">
-    <label for="inputAddress2" class="form-label">Blog Text</label>
-    <textarea class="form-control" id="blog-text" placeholder="Your text..."></textarea>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Save</button>
-  </div>
-</form>
+
+      <form class="row g-3">
+        <div class="col-12">
+          <label for="blogTitle" class="form-label">Blog Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="blog-title"
+            placeholder="Blog Title"
+            value="{{title}}"
+          />
+        </div>
+        <div class="col-12">
+          <label for="blogText" class="form-label">Blog Text</label>
+          <textarea
+            class="form-control"
+            id="blog-text"   
+          >{{blog_text}}</textarea>
+        </div>
+        <div class="col-12">
+                    <button
+            type="submit"
+            class="btn btn-primary"
+            id="saveEditBtn"
+            blog-id="{{blog_id}}"
+          >Save</button>
+        </div>
+      </form>
     </div>
-    <div class="col">
+
+  </div>
+  </div>
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"
+></script>
+<script src="../js/editHandler.js"></script>
